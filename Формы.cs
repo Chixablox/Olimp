@@ -10,8 +10,8 @@ namespace Delegate
         {
 
             //Считывание данных
-            StreamReader sr = new StreamReader("input2.txt");
-            StreamReader sr1 = new StreamReader("output2.txt");
+            StreamReader sr = new StreamReader("input3.txt");
+            StreamReader sr1 = new StreamReader("output3.txt");
             string s = sr.ReadLine();
             int n = Convert.ToInt32(s);
             List<string[]> det = new List<string[]>();
@@ -51,7 +51,7 @@ namespace Delegate
                         if (ch != 5) continue;
                         for (var k = 10; k < 15; k++)
                         {
-                            if ((pol[i][k] == det[j][k]) || (pol[i][k] == det[j][14 - k]))
+                            if ((pol[i][k] == det[j][k]) || (pol[i][k] == det[j][14 - k + 5]))
                             {
                                 ch++;
                             }
@@ -70,7 +70,7 @@ namespace Delegate
                             ch = 10;
                             for (var k = 5; k < 10; k++)
                             {
-                                if ((pol[i][k] == det[j][k + 10]) || (pol[i][k] == det[j][19 - k]))
+                                if ((pol[i][k] == det[j][k + 10]) || (pol[i][k] == det[j][19 - k +5]))
                                 {
                                     ch++;
                                 }
