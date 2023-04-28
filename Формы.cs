@@ -11,8 +11,8 @@ namespace Delegate
 
             int p = 0;
             //Считывание данных
-            StreamReader sr = new StreamReader("input3.txt");
-            StreamReader sr1 = new StreamReader("output3.txt");
+            StreamReader sr = new StreamReader("input15.txt");
+            StreamReader sr1 = new StreamReader("output15.txt");
             string s = sr.ReadLine();
             int n = Convert.ToInt32(s);
             List<string[]> det = new List<string[]>();
@@ -31,7 +31,7 @@ namespace Delegate
             }
             Console.WriteLine(n);
             //Решение задачи
-            
+
             List<List<int>> otvet = new List<List<int>>();
             for (var i = 0; i < det.Count; i++)
             {
@@ -76,7 +76,6 @@ namespace Delegate
                     }
                 }
             }
-
             for (var i = 0; i < pol.Count; i++)
             {
                 for (var j = 0; j < det.Count; j++)
@@ -113,6 +112,7 @@ namespace Delegate
                     }
                 }
             }
+
             //Верх-низ обратное
             for (var i = 0; i < pol.Count; i++)
             {
@@ -149,7 +149,6 @@ namespace Delegate
                     }
                 }
             }
-
             for (var i = 0; i < pol.Count; i++)
             {
                 for (var j = 0; j < det.Count; j++)
@@ -186,6 +185,7 @@ namespace Delegate
                     }
                 }
             }
+
 
             //Низ-верх
             for (var i = 0; i < pol.Count; i++)
@@ -224,8 +224,6 @@ namespace Delegate
                     }
                 }
             }
-
-
             for (var i = 0; i < pol.Count; i++)
             {
                 for (var j = 0; j < det.Count; j++)
@@ -262,6 +260,7 @@ namespace Delegate
                     }
                 }
             }
+
             //Низ-верх(обратное)
             for (var i = 0; i < pol.Count; i++)
             {
@@ -299,7 +298,6 @@ namespace Delegate
                     }
                 }
             }
-
             for (var i = 0; i < pol.Count; i++)
             {
                 for (var j = 0; j < det.Count; j++)
@@ -365,24 +363,11 @@ namespace Delegate
                         }
                     }
                     if (ch != 10) continue;
-                    p = 4;
                     for (var k = 5; k < 10; k++)
                     {
-                        if ((pol[i][k] == det[j][k - 5]) || (pol[i][k] == det[j][p]))
+                        if ((pol[i][k] == det[j][k + 5]))
                         {
                             ch++;
-                        }
-                        p--;
-                    }
-                    if (ch < 15)
-                    {
-                        ch = 10;
-                        for (var k = 5; k < 10; k++)
-                        {
-                            if (((pol[i][k] == det[j][14 - k + 5])) || (pol[i][k] == det[j][k + 5]))
-                            {
-                                ch++;
-                            }
                         }
                     }
 
@@ -393,6 +378,44 @@ namespace Delegate
                     }
                 }
             }
+            for (var i = 0; i < pol.Count; i++)
+            {
+                if (pol[i][0] == "2") continue;
+                for (var j = 0; j < det.Count; j++)
+                {
+                    int ch = 0;
+                    for (var k = 0; k < 5; k++)
+                    {
+                        if ((pol[i][k] == det[j][k + 15]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 5) continue;
+                    for (var k = 10; k < 15; k++)
+                    {
+                        if ((pol[i][k] == det[j][k - 5]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 10) continue;
+                    for (var k = 5; k < 10; k++)
+                    {
+                        if ((pol[i][k] == det[j][14 - k + 5]))
+                        {
+                            ch++;
+                        }
+                    }
+
+                    if (ch == 15)
+                    {
+                        pol[i][0] = "2";
+                        otvet[j].Add(i + 1);
+                    }
+                }
+            }
+
 
             //Право-лево(обратное)(НЕ СДЕЛАЛ)
             for (var i = 0; i < pol.Count; i++)
@@ -420,22 +443,11 @@ namespace Delegate
                     p = 4;
                     for (var k = 5; k < 10; k++)
                     {
-                        if ((pol[i][k] == det[j][k - 5]) || (pol[i][k] == det[j][p]))
+                        if ((pol[i][k] == det[j][p]))
                         {
                             ch++;
                         }
                         p--;
-                    }
-                    if (ch < 15)
-                    {
-                        ch = 10;
-                        for (var k = 5; k < 10; k++)
-                        {
-                            if (((pol[i][k] == det[j][14 - k + 5])) || ((pol[i][k] == det[j][k + 5])))
-                            {
-                                ch++;
-                            }
-                        }
                     }
 
                     if (ch == 15)
@@ -445,6 +457,46 @@ namespace Delegate
                     }
                 }
             }
+            for (var i = 0; i < pol.Count; i++)
+            {
+                if (pol[i][0] == "2") continue;
+                for (var j = 0; j < det.Count; j++)
+                {
+                    int ch = 0;
+                    for (var k = 0; k < 5; k++)
+                    {
+                        if ((pol[i][k] == det[j][19 - k]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 5) continue;
+                    for (var k = 10; k < 15; k++)
+                    {
+                        if ((pol[i][k] == det[j][19 - k]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 10) continue;
+                    p = 4;
+                    for (var k = 5; k < 10; k++)
+                    {
+                        if ((pol[i][k] == det[j][k - 5]))
+                        {
+                            ch++;
+                        }
+                        p--;
+                    }
+
+                    if (ch == 15)
+                    {
+                        pol[i][0] = "2";
+                        otvet[j].Add(i + 1);
+                    }
+                }
+            }
+
 
 
             //Лево-право(прямое)
@@ -473,21 +525,47 @@ namespace Delegate
                     p = 4;
                     for (var k = 5; k < 10; k++)
                     {
-                        if ((pol[i][k] == det[j][k - 5]) || (pol[i][k] == det[j][p]))
+                        if ((pol[i][k] == det[j][p]))
                         {
                             ch++;
                         }
                         p--;
                     }
-                    if (ch < 15)
+
+                    if (ch == 15)
                     {
-                        ch = 10;
-                        for (var k = 5; k < 10; k++)
+                        pol[i][0] = "2";
+                        otvet[j].Add(i + 1);
+                    }
+                }
+            }
+            for (var i = 0; i < pol.Count; i++)
+            {
+                if (pol[i][0] == "2") continue;
+                for (var j = 0; j < det.Count; j++)
+                {
+                    int ch = 0;
+                    for (var k = 0; k < 5; k++)
+                    {
+                        if ((pol[i][k] == det[j][k + 5]))
                         {
-                            if (((pol[i][k] == det[j][14 - k + 5])) || (pol[i][k] == det[j][k + 5]))
-                            {
-                                ch++;
-                            }
+                            ch++;
+                        }
+                    }
+                    if (ch != 5) continue;
+                    for (var k = 10; k < 15; k++)
+                    {
+                        if ((pol[i][k] == det[j][k + 5]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 10) continue;
+                    for (var k = 5; k < 10; k++)
+                    {
+                        if ((pol[i][k] == det[j][k - 5]))
+                        {
+                            ch++;
                         }
                     }
 
@@ -498,6 +576,7 @@ namespace Delegate
                     }
                 }
             }
+
 
             //Лево-право(обратное)
             for (var i = 0; i < pol.Count; i++)
@@ -515,33 +594,59 @@ namespace Delegate
                     }
                     if (ch != 5) continue;
                     p = 19;
-                    /*for (var k = 10; k < 15; k++)
+                    for (var k = 10; k < 15; k++)
                     {
                         if ((pol[i][k] == det[j][p]))
                         {
                             ch++;
                         }
                         p--;
-                    }*/
+                    }
                     if (ch != 10) continue;
-                    p = 4;
                     for (var k = 5; k < 10; k++)
                     {
-                        if ((pol[i][k] == det[j][k - 5]) || (pol[i][k] == det[j][p]))
+                        if (((pol[i][k] == det[j][k + 5])))
+                        {
+                            ch++;
+                        }
+                    }
+
+                    if (ch == 15)
+                    {
+                        pol[i][0] = "2";
+                        otvet[j].Add(i + 1);
+                    }
+                }
+            }
+            for (var i = 0; i < pol.Count; i++)
+            {
+                if (pol[i][0] == "2") continue;
+                for (var j = 0; j < det.Count; j++)
+                {
+                    int ch = 0;
+                    for (var k = 0; k < 5; k++)
+                    {
+                        if ((pol[i][k] == det[j][9 - k]))
+                        {
+                            ch++;
+                        }
+                    }
+                    if (ch != 5) continue;
+                    p = 19;
+                    for (var k = 10; k < 15; k++)
+                    {
+                        if ((pol[i][k] == det[j][p]))
                         {
                             ch++;
                         }
                         p--;
                     }
-                    if (ch < 15)
+                    if (ch != 10) continue;
+                    for (var k = 5; k < 10; k++)
                     {
-                        ch = 10;
-                        for (var k = 5; k < 10; k++)
+                        if (((pol[i][k] == det[j][14 - k + 5])))
                         {
-                            if (((pol[i][k] == det[j][14 - k + 5])) || ((pol[i][k] == det[j][k + 5])))
-                            {
-                                ch++;
-                            }
+                            ch++;
                         }
                     }
 
