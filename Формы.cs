@@ -11,8 +11,8 @@ namespace Delegate
 
             int p = 0;
             //Считывание данных
-            StreamReader sr = new StreamReader("input13.txt");
-            StreamReader sr1 = new StreamReader("output13.txt");
+            StreamReader sr = new StreamReader("input14.txt");
+            StreamReader sr1 = new StreamReader("output14.txt");
             string s = sr.ReadLine();
             int n = Convert.ToInt32(s);
             List<string[]> det = new List<string[]>();
@@ -33,7 +33,7 @@ namespace Delegate
 
             /*for(var i=0; i<15; i++)
             {
-                Console.Write(pol[89][i]);
+                Console.Write(pol[784][i]);
             }
             Console.WriteLine();*/
 
@@ -101,6 +101,7 @@ namespace Delegate
                                     ch++;
                                 }
                             }
+                            for(var k = 0; k<)
                             if (ch == 15)
                             {
                                 pol[l][0] = "2";
@@ -407,7 +408,6 @@ namespace Delegate
                 }
             }
 
-
             //Право-лево(обратное) - лево-право(обр)
             for (var i = 0; i < pol.Count; i++)
             {
@@ -487,8 +487,6 @@ namespace Delegate
                 }
             }
             
-
-
             //Лево-право(прямое) - лево-право(обр)
             for (var i = 0; i < pol.Count; i++)
             {
@@ -637,23 +635,25 @@ namespace Delegate
                 }
             }
 
+
+
             //Вывод ответа
-            Console.WriteLine("Мой ответ");
-            for (var i = 0; i < n; i++)
-            {
-                otvet[i].Sort();
-                for (var j = 0; j < otvet[i].Count; j++)
-                {
-                    Console.Write(otvet[i][j] + " ");
-                }
-                Console.WriteLine();
-            }
             List<string[]> otvetreal = new List<string[]>();
             for (var i = 0; i < n; i++)
             {
                 s = sr1.ReadLine();
                 string[] d1 = s.Split(' ');
                 otvetreal.Add(d1);
+            }
+            Console.WriteLine("Мой ответ");
+            for (var i = 0; i < n; i++)
+            {
+                //otvet[i].Sort();
+                for (var j = 0; j < otvet[i].Count; j++)
+                {
+                    Console.Write(otvet[i][j] + " ");
+                }
+                Console.WriteLine();
             }
             Console.WriteLine("Реальный ответ");
             for (var i = 0; i < det.Count; i++)
@@ -663,6 +663,27 @@ namespace Delegate
                     Console.Write(otvetreal[i][j] + " ");
                 }
                 Console.WriteLine();
+            }
+            int srav = 0;
+            for (var i = 0; i < n; i++)
+            {
+                otvet[i].Sort();
+                for (var j = 0; j < 2; j++)
+                {
+                    if (Convert.ToString(otvet[i][j])== otvetreal[i][j])
+                    {
+                        srav++;
+                    }
+                }
+            }
+            //Console.WriteLine(srav + " " + n);
+            if (srav == 2*n)
+            {
+                Console.WriteLine("Тест успешно пройден");
+            }
+            else
+            {
+                Console.WriteLine("Тест не пройден");
             }
             Console.ReadLine();
 
